@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bar - Cafetería Lluna | Xirivella, Valencia</title>
+<meta name="description" content="Bar - Cafetería Lluna, en Xirivella (Valencia). Desayunos, tapas, terraza y buen ambiente de barrio desde primera hora de la mañana hasta la noche.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #17233d;
+    --navy-deep: #0f1830;
+    --brick: #a8402f;
+    --brick-light: #c65a44;
+    --cream: #f4ecdc;
+    --cream-dim: #d9cdb2;
+    --gold: #d1a24a;
+    --ink: #241d14;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Work Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; }
+
+  .mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--navy);
+    border-bottom: 2px solid var(--gold);
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .brand svg { width: 28px; height: 28px; flex-shrink: 0; }
+  nav .links {
+    display: flex;
+    gap: 22px;
+    font-size: 0.9rem;
+  }
+  nav .links a {
+    color: var(--cream-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav .links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--brick);
+    color: var(--cream) !important;
+    padding: 8px 16px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  @media (max-width: 640px) {
+    nav .links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 90px 0 70px;
+    overflow: hidden;
+  }
+  .stars {
+    position: absolute;
+    inset: 0;
+    opacity: 0.5;
+  }
+  .hero .wrap {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-moon {
+    width: 100%;
+    max-width: 340px;
+    justify-self: center;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero p.lead {
+    color: var(--cream-dim);
+    font-size: 1.05rem;
+    max-width: 46ch;
+    margin-bottom: 28px;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 13px 24px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    background: var(--brick);
+    color: var(--cream);
+    box-shadow: 0 4px 0 var(--navy-deep);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid var(--cream-dim);
+  }
+  .stat-line {
+    margin-top: 30px;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    color: var(--cream-dim);
+    font-size: 0.9rem;
+  }
+  .stars-rating { color: var(--gold); letter-spacing: 2px; }
+
+  @media (max-width: 780px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero-moon { max-width: 220px; order: -1; }
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about {
+    padding: 80px 0;
+  }
+  .about .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .section-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--brick);
+    margin-bottom: 10px;
+  }
+  .about h2 { font-size: 2rem; margin-bottom: 18px; }
+  .about p { color: #4a4032; margin-bottom: 14px; max-width: 50ch; }
+  .about img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 18px 40px -12px rgba(23,35,61,0.35);
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .tag-pill {
+    background: var(--navy);
+    color: var(--cream);
+    font-size: 0.78rem;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  @media (max-width: 780px) {
+    .about .wrap { grid-template-columns: 1fr; }
+    .about .img-col { order: -1; }
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery {
+    background: var(--navy);
+    padding: 70px 0;
+  }
+  .gallery .section-tag { color: var(--gold); }
+  .gallery h2 { color: var(--cream); font-size: 2rem; margin-bottom: 30px; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 16px;
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+  }
+  .gallery-grid .tall { grid-row: span 2; height: 100%; }
+  @media (max-width: 700px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-grid .tall { grid-row: auto; }
+    .gallery-grid img { height: 260px; }
+  }
+
+  /* ---------- HOURS (chalkboard) ---------- */
+  .hours {
+    padding: 80px 0;
+  }
+  .hours .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: start;
+  }
+  .hours h2 { font-size: 2rem; margin-bottom: 16px; }
+  .hours p { color: #4a4032; max-width: 42ch; margin-bottom: 20px; }
+  .board {
+    background: var(--navy-deep);
+    border-radius: 6px;
+    padding: 30px 34px;
+    box-shadow: 0 20px 45px -15px rgba(23,35,61,0.5);
+    border: 3px solid var(--brick);
+  }
+  .board-title {
+    color: var(--gold);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .board-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 0;
+    border-bottom: 1px dashed rgba(244,236,220,0.18);
+    color: var(--cream);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.92rem;
+  }
+  .board-row:last-child { border-bottom: none; }
+  .board-row .day { color: var(--cream-dim); }
+  .info-list {
+    list-style: none;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .info-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: #4a4032;
+  }
+  .info-list svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--brick); margin-top: 2px; }
+  @media (max-width: 780px) {
+    .hours .wrap { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- LOCATION / CTA ---------- */
+  .location {
+    background: var(--brick);
+    color: var(--cream);
+    padding: 70px 0;
+    text-align: center;
+  }
+  .location h2 { font-size: 2rem; margin-bottom: 12px; }
+  .location p { color: rgba(244,236,220,0.9); margin-bottom: 26px; }
+  .location .btn-primary {
+    background: var(--navy);
+    box-shadow: 0 4px 0 var(--navy-deep);
+  }
+  .location .btn-ghost { border-color: rgba(244,236,220,0.6); }
+  .location-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  footer {
+    background: var(--navy-deep);
+    color: var(--cream-dim);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M14 2.5c-4.5 1-7.5 5-7.5 9.5s3 8.5 7.5 9.5c-6 0-11-4.5-11-9.5s5-9.5 11-9.5z" fill="#d1a24a"/></svg>
+      Bar · Cafetería Lluna
+    </div>
+    <div class="links">
+      <a href="#sobre">El bar</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#horario">Horario</a>
+      <a href="#ubicacion" class="nav-cta">Cómo llegar</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <svg class="stars" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+    <circle cx="60" cy="60" r="1.6" fill="#d1a24a"/>
+    <circle cx="150" cy="120" r="1" fill="#d1a24a"/>
+    <circle cx="720" cy="50" r="1.6" fill="#d1a24a"/>
+    <circle cx="680" cy="140" r="1" fill="#d1a24a"/>
+    <circle cx="400" cy="30" r="1" fill="#d1a24a"/>
+    <circle cx="30" cy="200" r="1" fill="#d1a24a"/>
+    <circle cx="760" cy="250" r="1.4" fill="#d1a24a"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Xirivella · Valencia</div>
+      <h1>El bar de siempre,<br>bajo la <em>lluna</em>.</h1>
+      <p class="lead">Café desde las siete de la mañana, cañas en la terraza y una mesa siempre lista para la partida de después de comer. El bar de barrio de toda la vida, en el mismo sitio de siempre.</p>
+      <div class="hero-actions">
+        <a href="#ubicacion" class="btn btn-primary">Cómo llegar</a>
+        <a href="https://wa.me/34635904314" class="btn btn-ghost">Reservar mesa por WhatsApp</a>
+      </div>
+      <div class="stat-line">
+        <span class="stars-rating">★★★★☆</span>
+        <span>3,9 · 137 reseñas en Google</span>
+      </div>
+    </div>
+    <svg class="hero-moon" viewBox="0 0 300 300" fill="none">
+      <path d="M180 40c-60 12-98 62-98 122s38 110 98 122c-78 0-142-58-142-122S102 40 180 40z" fill="#d1a24a" opacity="0.95"/>
+      <circle cx="80" cy="60" r="4" fill="#f4ecdc"/>
+      <circle cx="230" cy="90" r="3" fill="#f4ecdc"/>
+      <circle cx="60" cy="140" r="2.5" fill="#f4ecdc"/>
+      <circle cx="245" cy="220" r="3.5" fill="#f4ecdc"/>
+    </svg>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="wrap">
+    <div>
+      <div class="section-tag">El bar</div>
+      <h2>Un clásico del barrio</h2>
+      <p>Bar - Cafetería Lluna lleva años siendo punto de encuentro en Xirivella: desayunos rápidos antes de trabajar, la caña de después de comer, y la terraza para las tardes de charla con vecinos de siempre.</p>
+      <p>Comida en el bar, buena carta de bebidas y trato cercano — sin postureo, como los bares que deberían quedar más.</p>
+      <div class="tag-row">
+        <span class="tag-pill">Terraza</span>
+        <span class="tag-pill">Comida en el bar</span>
+        <span class="tag-pill">Bebidas alcohólicas</span>
+        <span class="tag-pill">Vino y cerveza</span>
+        <span class="tag-pill">Baño</span>
+      </div>
+    </div>
+    <div class="img-col">
+      <img src="images/interior.jpg" alt="Interior del Bar Cafetería Lluna, con mesas de madera y ambiente tranquilo">
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="fotos">
+  <div class="wrap">
+    <div class="section-tag">Fotos</div>
+    <h2>Así es el Lluna</h2>
+    <div class="gallery-grid">
+      <img class="tall" src="images/fachada.jpg" alt="Fachada del Bar Cafetería Lluna con terraza y toldo rojo">
+      <img src="images/cartel.jpg" alt="Cartel de la fachada del Bar Cafetería Lluna, con el logo de la luna y las estrellas">
+    </div>
+  </div>
+</section>
+
+<section class="hours" id="horario">
+  <div class="wrap">
+    <div>
+      <div class="section-tag">Horario</div>
+      <h2>Abierto todos los días</h2>
+      <p>De 7 de la mañana a las 11:30 de la noche, sin descanso entre semana. Ideal tanto para el café antes de trabajar como para la caña de la sobremesa.</p>
+      <ul class="info-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg> No hacen entregas a domicilio</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg> Baño disponible</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg> Sin parking propio — aparcamiento gratuito en la calle</li>
+      </ul>
+    </div>
+    <div class="board">
+      <span class="board-title">Horario semanal</span>
+      <div class="board-row"><span class="day">Lunes</span><span>7:00 – 23:30</span></div>
+      <div class="board-row"><span class="day">Martes</span><span>7:00 – 23:30</span></div>
+      <div class="board-row"><span class="day">Miércoles</span><span>7:00 – 23:30</span></div>
+      <div class="board-row"><span class="day">Jueves</span><span>7:00 – 23:30</span></div>
+      <div class="board-row"><span class="day">Viernes</span><span>7:00 – 23:30</span></div>
+      <div class="board-row"><span class="day">Sábado</span><span>7:00 – 23:30</span></div>
+      <div class="board-row"><span class="day">Domingo</span><span>7:00 – 23:30</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="ubicacion">
+  <div class="wrap">
+    <div class="section-tag" style="color:var(--navy)">Ubicación</div>
+    <h2>46950 Xirivella, Valencia</h2>
+    <p>A pie de calle, con terraza y aparcamiento gratuito en los alrededores.</p>
+    <div class="location-actions">
+      <a href="https://www.google.com/maps/search/?api=1&query=Bar+Cafeteria+Lluna+Xirivella" class="btn btn-primary" target="_blank" rel="noopener">Ver en Google Maps</a>
+      <a href="https://wa.me/34635904314" class="btn btn-ghost">Escribir por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Bar - Cafetería Lluna · Xirivella, Valencia · Página de ejemplo creada como práctica
+  </div>
+</footer>
+
+</body>
+</html>
